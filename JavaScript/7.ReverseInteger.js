@@ -25,7 +25,7 @@ var reverse = function (x) {
     // const highEnd = ((2 ** 32)-1);
     // console.log("lowEnd: ", lowEnd);
     // console.log("highEnd: ", highEnd);
-    if (-(2 ** 32) <= strToInt && strToInt <= (2 ** 32)-1) {
+    if (-(2 ** 31) <= strToInt && strToInt <= (2 ** 31)-1) {
         // console.log("here");
         return parseInt(holdInvertInt);
     } else {
