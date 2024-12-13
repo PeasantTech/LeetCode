@@ -2,10 +2,24 @@
  * @param {string} val
  * @return {Object}
  */
-var expect = function(val) {
+var expect = function (val) {
+    // const toBeThrow = "Not Equal";
+    // const notToBeThrow = "Equal";
     const objectVar = {
-    toBe: (objFuncVal) => val === objFuncVal ? true : "Not Equal",
-    notToBe: (objFuncVal) => val !== objFuncVal ? true : "Equal"
+        toBe: (value) => {
+            if (val === value) {
+                return true;
+            } else {
+                throw new Error("Not Equal");
+            }
+        },
+        notToBe: (value) => {
+            if (val !== value) {
+                return true;
+            } else {
+                throw new Error("Equal");
+            }
+        } 
     }
     return objectVar
 };
