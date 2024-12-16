@@ -6,8 +6,8 @@
  */
 var getFinalState = function(nums, k, multiplier) {
     for (let i=1; i <= k; i++){
-        const holdVal = nums.map()
-        nums.map(holdVal) = holdVal * multiplier;
+        const holdIndex = nums.indexOf(Math.min(...nums))
+        nums[holdIndex] = Math.min(...nums) * multiplier;
     }
     return nums;
 };
