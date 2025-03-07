@@ -82,3 +82,64 @@ var closestPrimes = function (left, right) {
     }
     return finArr;
 };
+
+/**
+ * @param {number} left
+ * @param {number} right
+ * @return {number[]}
+ */
+var closestPrimes = function (left, right) {
+    let sieveArr = [];
+    let someArr = [];
+    const singles = [2, 3, 5, 7,];
+    for (let i = 0; i <= right - left; i++) {
+        if (left + i === 1) {
+            sieveArr[i] = 0;
+        } else {
+            sieveArr[i] = left + i;
+        }
+        console.log(i, sieveArr[i], right-left);
+        for (let j = 0; j < 4; j++) {
+            if ((sieveArr[i] % singles[j]) == 0) {
+                if (sieveArr[i] == 2 || sieveArr[i] == 3 || sieveArr[i] == 5 || sieveArr[i] == 7) {
+                    someArr[i] = sieveArr[i];
+                    break;
+                } else {
+                    sieveArr[i] = 0;
+                    someArr = sieveArr.reduce((holdArr, holdVal) => {
+                        if (holdVal !== 0) {
+                            holdArr.push(holdVal);
+                        }
+                        return holdArr;
+                    }, []);
+                    // sieveArr[i] = 0;
+                }
+            }
+        }
+    }
+    console.log(someArr)
+    // sieveArr.sort((a, b) => a - b);
+
+    // const removeZero = 0;
+    // sieveArr = sieveArr.reduce((acc, item) => {
+    //     if (item !== removeZero) {
+    //         acc.push(item);
+    //     }
+    //     return acc;
+    // }, []);
+
+    let distArr = [];
+    for (let i = 0; i < someArr.length - 1; i++) {
+        distArr[i] = someArr[i + 1] - someArr[i];
+    }
+    console.log(distArr);
+    let finArr = [];
+    const holdVar = distArr.indexOf(Math.min(...distArr));
+    finArr[0] = someArr[holdVar];
+    finArr[1] = someArr[holdVar + 1];
+
+    if (someArr.length <= 1) {
+        finArr = [-1, -1];
+    }
+    return finArr;
+};
