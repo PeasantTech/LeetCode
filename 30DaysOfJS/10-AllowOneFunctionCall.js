@@ -2,13 +2,18 @@
  * @param {Function} fn
  * @return {Function}
  */
-var once = function(fn) {
+var once = function (fn) {
+    let onceBool = false;
 
-    return function(...args){
-    console.log(args[0]);
-        for (let i = 0; i<args.length;i++){
-            if (i === 0){ return calls = fn(...args)};
+    return function (...args) {
+        if (!onceBool) {
+            calls = fn(...args);
+            onceBool = true;
         }
+        else {
+            calls = undefined
+        };
+        return calls;
     }
 };
 
